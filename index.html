@@ -54,14 +54,24 @@
     </div>
   </section>
 
-  <!-- Payment Section -->
-  <section style="padding: 40px; background-color: #f9f9f9;">
-    <h2>Unlock Premium Access</h2>
-    <p>Pay to access personalized video calls and exclusive content.</p>
-    <form action="https://checkout.stripe.com/pay/YOUR_CHECKOUT_LINK" method="GET">
-      <button type="submit">Pay with Stripe</button>
+<!-- Payment Section -->
+<section style="padding: 40px; background-color: #f9f9f9;">
+  <h2>Unlock Premium Access</h2>
+
+<!-- Book Call Button -->
+  <div style="margin-top: 20px;">
+    <a href="booking.html">
+      <button type="button" style="padding: 10px 20px; font-size: 16px;">Book Call</button>
+    </a>
+  </div>
+
+  
+    <!-- Make Call Now Button -->
+    <form action="https://checkout.stripe.com/pay/YOUR_INSTANT_CALL_LINK" method="GET">
+      <button type="submit" style="padding: 10px 20px; font-size: 16px;">Make Call Now</button>
     </form>
-  </section>
+  </div>
+</section>
 
   <!-- Hidden Page Redirect (Post-payment) -->
   <!-- This would be a separate HTML file like members.html -->
