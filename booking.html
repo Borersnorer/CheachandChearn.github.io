@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <title>Book a Call – Cheach and Chearn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #confirmation {
+      display: none;
+      padding: 20px;
+      background-color: #d4edda;
+      color: #155724;
+      margin-top: 20px;
+      border: 1px solid #c3e6cb;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
 
@@ -20,16 +34,52 @@
   <!-- Booking Section -->
   <section style="padding: 40px; text-align: center;">
     <h2>Book a Call</h2>
-    <p>Select a time that works for you using the calendar below. After booking, you'll be redirected to complete payment.</p>
+    <p>Select a time that works for you using the calendar below. Once you've chosen, you can proceed to payment.</p>
 
-    <!-- Embed your booking calendar here -->
+    <!-- Booking Calendar Embed -->
     <iframe src="https://calendly.com/YOUR_USERNAME/YOUR_EVENT" width="100%" height="600" frameborder="0"></iframe>
+
+    <!-- Simulated Booking Confirmation -->
+    <div style="margin-top: 20px;">
+      <label>
+        <input type="checkbox" id="bookingConfirmed">
+        I have selected a time and date
+      </label>
+    </div>
+
+    <!-- Proceed to Payment Button -->
+    <form id="paymentForm" action="https://checkout.stripe.com/pay/YOUR_BOOKING_PAYMENT_LINK" method="GET">
+      <button id="proceedButton" type="submit" style="padding: 10px 20px; font-size: 16px;" disabled>Proceed to Payment</button>
+    </form>
+
+    <!-- Confirmation Message -->
+    <div id="confirmation">Your booking is confirmed! Redirecting to homepage...</div>
   </section>
 
   <!-- Footer -->
   <footer style="padding: 20px; text-align: center; background-color: #ddd;">
     <p>&copy; 2025 Cheach and Chearn. All rights reserved.</p>
   </footer>
+
+  <!-- Script to Enable Button and Handle Confirmation -->
+  <script>
+    const checkbox = document.getElementById('bookingConfirmed');
+    const button = document.getElementById('proceedButton');
+    const form = document.getElementById('paymentForm');
+    const confirmation = document.getElementById('confirmation');
+
+    checkbox.addEventListener('change', () => {
+      button.disabled = !checkbox.checked;
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      confirmation.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000); // Redirect after 3 seconds
+    });
+  </script>
 
 </body>
 </html>
